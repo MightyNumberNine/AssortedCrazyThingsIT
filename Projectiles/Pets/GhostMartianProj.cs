@@ -94,6 +94,11 @@ namespace AssortedCrazyThings.Projectiles.Pets
 				}
 			}
 
+			if (PostAttacking)
+			{
+				AmuletOfManyMinionsApi.ReleaseControl(this);
+			}
+
 			return true;
 		}
 
@@ -213,6 +218,8 @@ namespace AssortedCrazyThings.Projectiles.Pets
 					dust.velocity = offset * 0.0125f + Vector2.UnitX.RotatedBy(rotation);
 					dust.noGravity = true;
 				}
+
+				Projectile.velocity *= 0.2f;
 
 				AssAI.FlickerwickPetDraw(Projectile, frameCounterMaxFar: 10, frameCounterMaxClose: 10);
 
